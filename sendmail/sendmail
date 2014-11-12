@@ -1,0 +1,126 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'net/ssh'
+
+require_relative 'config.rb'
+
+def syntax_error
+	puts "Syntax error: command environment {stop|start|enable|disable|status|clear}"
+	exit 1
+end
+
+def check()
+	HOST.each do |h|
+		next unless h.match(/#{$env}/)
+		host = h + DOMAIN
+		puts "Connecting to #{host}: "
+		begin
+			Net::SSH.start( host, USER, :keys => KEYS ) do|ssh|
+				status = ssh.exec!("sudo cat /etc/sysconfig/sendmail && sudo service sendmail status")
+                                puts status
+				status = ssh.exec!("sudo sendmail -bp | grep 'Total request'")
+                                puts status
+
+			end # Net::SSH
+		rescue Exception => e
+			puts e.message
+		end
+	end # each
+
+end
+
+def get_root_box()
+        HOST.each do |h|
+                next unless h.match(/#{$env}/)
+                host = h + DOMAIN
+                puts "Getting root mailbox in #{host}: "
+                begin
+                        Net::SSH.start( host, USER, :keys => KEYS ) do|ssh|
+                                status = ssh.exec!("sudo grep \"reason:\" /var/spool/mail/root")
+                                puts status
+                        end # Net::SSH
+                rescue Exception => e
+                        puts e.message
+                end
+        end # each
+end
+
+def clear_root_box()
+        HOST.each do |h|
+                next unless h.match(/#{$env}/)
+                host = h + DOMAIN
+                puts "Truncate root mailbox in #{host}: "
+                begin
+                        Net::SSH.start( host, USER, :keys => KEYS ) do|ssh|
+                                status = ssh.exec!("sudo truncate -s 0 /var/spool/mail/root")
+                                puts status
+                        end # Net::SSH
+                rescue Exception => e
+                        puts e.message
+                end
+        end # each
+end
+
+
+def start_stop(action)
+	HOST.each do |h|
+		next unless h.match(/#{$env}/)
+		host = h +  DOMAIN
+		puts "Connecting to #{host}: "
+		begin
+			Net::SSH.start( host, USER, :keys => KEYS ) do|ssh|
+				status = ssh.exec!("sudo service sendmail #{action}")
+				puts status
+			end # Net::SSH
+		rescue Exception => e
+			puts e.message
+		end
+
+	end # each
+end # def action
+
+def enable_disable(action)
+	HOST.each do |h|
+		next unless h.match(/#{$env}/)
+		host = h + DOMAIN
+		puts "Connecting to #{host}: "
+		begin
+			Net::SSH.start( host, USER, :keys => KEYS ) do|ssh|
+				status = ssh.exec!("sudo sed -i -e 's/^DAEMON=.*/DAEMON=#{action}/i' /etc/sysconfig/sendmail")
+				status = ssh.exec!("sudo service sendmail restart")
+				puts status
+			end # Net::SSH
+		rescue Exception => e
+			puts e.message
+		end
+
+	end # each
+end # def action
+
+
+
+### MAIN ###
+if (ARGV.length != 2) then
+	syntax_error
+end
+
+$env=ARGV.shift
+
+case ARGV[0]
+when 'start'
+	start_stop('start')
+when 'stop'
+	start_stop('stop')
+when 'status'
+	check()
+        get_root_box()
+when 'clear'
+        clear_root_box()
+when 'enable'
+	enable_disable('yes')
+when 'disable'
+	enable_disable('no')
+else
+	syntax_error
+end
+
