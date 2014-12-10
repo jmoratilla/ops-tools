@@ -1,12 +1,12 @@
 # README
 
-## aws2gdrive
+## cost_per_project_json.rb
 
-Gets info about AWS instances and saves into GDrive spreadsheet
+Returns a JSON object with a summary of all your instances.
 
-AWS prices:
-http://www.scalr.com/blog/how-to-get-ec2-pricing-data-programmatically
+### Requisites
+It needs a instances.json file from the command:
 
-* get instances, elbs, and storage per project
-* get prices
-* correlate to get cost per project
+```
+$ aws elb describe-instances > instances.json
+```
