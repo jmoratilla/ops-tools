@@ -66,17 +66,30 @@ end
 
 def production(instances)
   result = {}
-  instances.reduce(0) {|sum,i| i[1].match(/prod/) ? sum + 1 : sum }
+  begin
+    (instances.select {|i| i[1].match(/prod|production/)}).length
+  rescue Exception => ex
+    pp "Error: #{ex.message}"
+  end
 end
 
+# Report
+report = {}
+## Totals
+#puts "Total instances: #{@total_instances}"
+report['total_instances'] = @total_instances
 
-puts "Total instances: #{@total_instances}"
-
+## Per project
 @projects.each do |project,instances|
-  puts "Project: #{project}"
-  puts "Instances: #{instances.length}"
-  puts "Instances in production: #{production(instances)}"
-  puts "Types: #{types_sum(instances)}"
+  report[project] = {
+    'summary' => {
+      'instances' => instances.length,
+      'production' => production(instances),
+      'types' => types_sum(instances)
+    },
+    'instances' => instances
+  }
 end
+puts report.to_json
 
 puts "Done. Time elapsed = #{Time.now - start_time} secs"
