@@ -38,7 +38,7 @@ ws = ss.worksheets[0]
 ws.title = ss_title
 
 # Header
-ws.list.keys = ["id","name","type","virt_type","vpc","subnet","launch_time","state","key_name"]
+ws.list.keys = ["id","name","environment","type","virt_type","vpc","subnet","launch_time","state","key_name"]
 
 # Dump
 begin
@@ -48,6 +48,7 @@ begin
         ws.list.push({
             "id"            => instance.instance_id,
             "name"          => instance.tags["Name"],
+            "environment"   => instance.tags["Env"],
             "type"          => instance.instance_type,
             "virt_type"     => instance.virtualization_type,
             "vpc"           => instance.vpc_id,
