@@ -3,7 +3,7 @@
 
 # You need an STACKDRIVER_API_KEY env variable
 
-require 'net/http'
+require 'rest_client'
 require 'optparse'
 require 'json'
 
@@ -19,6 +19,10 @@ end
 options = {}
 OptionParser.new do |opts|
   opts.banner = syntaxis
+
+  opts.on('-c', '--config FILE', 'config file') do |c|
+    options[:config] = c
+  end
 
   opts.on('-p', '--project PROJECT', 'Name of the project') do |p|
     options[:project] = p
@@ -50,6 +54,8 @@ begin
   puts options
 end if options[:verbose]
 
+# @config = JSON.parse(File.read(options[:config] ? options[:config] : './config.json'))
+@config = { "api_key" => ENV['STACKDRIVER_API_KEY'] }
 
 message = "#{options[:project]}: #{options[:message]}"
 
@@ -63,18 +69,12 @@ payload = {
 puts "data: #{payload}, class: #{payload.class}" if options[:verbose]
 
 url = 'https://event-gateway.stackdriver.com/v1/annotationevent'
-uri = URI.parse(url)
-request = Net::HTTP::Post.new(uri)
-request.content_type = 'application/json'
-request['x-stackdriver-apikey'] = ENV['STACKDRIVER_API_KEY']
-request.set_form_data(payload)
 
+response = RestClient.post url, payload, :content_type => :json, :accept => :json, :'x-stackdriver-apikey' => @config['api_key']
 
-response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-  http.request(request)
-end
 
 if options[:verbose] then
   puts response.code
   puts response.body
 end
+

@@ -1,16 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    faraday (0.9.0)
-      multipart-post (>= 1.2, < 3)
-    multi_json (1.10.1)
-    multipart-post (2.0.0)
-    stackdriver-ruby (0.0.1)
-      faraday (~> 0.9)
-      multi_json (~> 1.8)
+    json (1.8.1)
+    mime-types (1.25.1)
+    rdoc (4.2.0)
+      json (~> 1.4)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  stackdriver-ruby
+  json
+  rest-client
