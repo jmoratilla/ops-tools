@@ -13,15 +13,32 @@ moratilla:
   account_api_key: u198901-e2ba9061264b9701b21732f2
   monitors:
     - friendlyname: moratilla-web
+      id: '776584576'
       url: http://www.moratilla.com
-      type: url
+      type: 2
       keywordtype: 2
       keywordvalue: moratilla
       alertcontacts:
         - 0198901
-      
+    - friendlyname: nuriacbotey-web
+      id: '776584577'
+      url: http://www.nuriacbotey.es
+      type: 2
+      keywordtype: 2
+      keywordvalue: nuria
+      alertcontacts:
+        - 2306478
+    - friendlyname: google-web
+      id: '776584578'
+      url: http://www.google.es
+      type: 2
+      keywordtype: 2
+      keywordvalue: google
+      alertcontacts:
+        - 0198901
+        - 2306478
+
 
 bqoncall:
-  account_api_key: -quitar-esto-u113351-ef913fdbf14a19bf9dc87adc
-  contacts:
-    - 
+  <<: *default
+  account_api_key: --no--u113351-ef913fdbf14a19bf9dc87adc

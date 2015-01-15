@@ -8,31 +8,45 @@ class UptimeRobotCLI
 
   def initialize
     env=ENV['UPTIMEROBOT_ENV']
-    @config = YAML::load(File.open("./config/settings.yml"))[env]
+    @config = YAML::load_file("./config/settings.yml")[env]
     @site = RestClient::Resource.new('http://api.uptimerobot.com')
+  end
+
+  def parse_response(string)
+    JSON.parse(string[/^jsonUptimeRobotApi\((.*)\)$/,1])
   end
 
   def show_config
     puts @config.to_yaml  
   end
 
+  def save_config(target,config)
+    File.write("./config/#{target}.yml",config.to_yaml)
+  end
+
   def account_details
-    @site['getAccountDetails'].get :params => {:apiKey => @config['account_api_key'], :format => "json"}, :accept => :json
+    response = @site['getAccountDetails'].get :params => {:apiKey => @config['account_api_key'], :format => @config['format']}, :accept => :json
+    parse_response(response)
   end
 
   def monitors
-    @site['getMonitors'].get :params => {:apiKey => @config['account_api_key'], :logs => 1, :alertContacts => 1, :format => "json"}, :accept => :json
+    response = @site['getMonitors'].get :params => {:apiKey => @config['account_api_key'], :logs => 0, :alertContacts => 0, :format => @config['format']}, :accept => :json
+    result = parse_response(response)
+    result['monitors']['monitor']
   end
 
   def contacts
-    @site['getAlertContacts'].get :params => {:apiKey => @config['account_api_key'], :format => "json"}, :accept => :json
+    response = @site['getAlertContacts'].get :params => {:apiKey => @config['account_api_key'], :format => @config['format']}, :accept => :json
+    result = parse_response(response)
   end
 
+  # This should create new or edit existing monitors
   def create_monitors
     @config['monitors'].each do |monitor|
       next if monitor['id']
       payload = {
         :apiKey => @config['account_api_key'],
+        :format => @config['format'],
         :monitorFriendlyName => monitor['friendlyname'],
         :monitorURL => monitor['url'],
         :monitorType => monitor['type'],
@@ -40,7 +54,28 @@ class UptimeRobotCLI
         :monitorKeywordValue => monitor['keywordvalue'],
         :monitorAlertContacts => monitor['alertcontacts'].join('-')
       }
-      @site['newMonitor'].post payload.to_json, :content_type => :json, :accept => :json
+
+      response = @site['newMonitor'].get :params => payload, :content_type => :json, :accept => :json
+      result = parse_response(response)
+
+      puts result
+
+      if response.code == 200 then
+        monitor['id'] = result['monitor']['id']
+      end
+    end
+    save_config(@config)
+  end
+
+  def delete_monitors
+    @config['monitors'].each do |monitor|
+      payload = {
+        :apiKey => @config['account_api_key'],
+        :format => @config['format'],
+        :monitorID => monitor['id']
+      }
+      response = @site['deleteMonitor'].get :params => payload, :content_type => :json, :accept => :json
+      result = parse_response(response)
     end
   end
 end
