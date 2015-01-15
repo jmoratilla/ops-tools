@@ -1,0 +1,27 @@
+# settings.yml
+
+default: &default
+  format: json
+  contacts:
+    - id: 0198901
+      type: 2
+      value: jorge@moratilla.com
+      status: 2
+
+moratilla:
+  <<: *default
+  account_api_key: u198901-e2ba9061264b9701b21732f2
+  monitors:
+    - friendlyname: moratilla-web
+      url: http://www.moratilla.com
+      type: url
+      keywordtype: 2
+      keywordvalue: moratilla
+      alertcontacts:
+        - 0198901
+      
+
+bqoncall:
+  account_api_key: -quitar-esto-u113351-ef913fdbf14a19bf9dc87adc
+  contacts:
+    - 
