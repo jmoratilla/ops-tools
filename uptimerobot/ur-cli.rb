@@ -78,6 +78,15 @@ class UptimeRobotCLI
       result = parse_response(response)
     end
   end
+
+  def dump_config
+    data = {
+      'contacts' => contacts,
+      'monitors' => monitors
+    }
+    
+    File.write("./config/#{Time.now}-#{@env}.json",data.to_json)
+  end
 end
 
 cli = UptimeRobotCLI.new
