@@ -7,8 +7,8 @@ require 'json'
 class UptimeRobotCLI
 
   def initialize
-    env=ENV['UPTIMEROBOT_ENV']
-    @config = YAML::load_file("./config/settings.yml")[env]
+    @env=ENV['UPTIMEROBOT_ENV']
+    @config = YAML::load_file("./config/#{@env}.yml")
     @site = RestClient::Resource.new('http://api.uptimerobot.com')
   end
 
@@ -20,8 +20,8 @@ class UptimeRobotCLI
     puts @config.to_yaml  
   end
 
-  def save_config(target,config)
-    File.write("./config/#{target}.yml",config.to_yaml)
+  def save_config(config)
+    File.write("./config/#{@env}.yml",config.to_yaml)
   end
 
   def account_details
@@ -38,6 +38,35 @@ class UptimeRobotCLI
   def contacts
     response = @site['getAlertContacts'].get :params => {:apiKey => @config['account_api_key'], :format => @config['format']}, :accept => :json
     result = parse_response(response)
+  end
+
+  def create_contacts
+    @config['contacts'].each do |contact|
+      next if contact['id']
+      payload = {
+        :apiKey => @config['account_api_key'],
+        :format => @config['format'],
+        :alertContactType => contact['type'],
+        :alertContactValue => contact['value']
+      }
+      response = @site['newAlertContact'].get :params => payload, :content_type => :json, :accept => :json
+      result = parse_response(response)
+      puts result
+      if response.code == 200 then
+        contact['id'] = result['alertcontact']['id']
+      end
+    end
+    save_config(@config)
+  end
+
+  def delete_contacts
+    @config['contacts'].each do |contact|
+      payload = {
+        :apiKey => @config['account_api_key'],
+        :format => @config['format'],
+        :alertContactID => contact['id']
+      }
+    end
   end
 
   # This should create new or edit existing monitors
@@ -65,6 +94,26 @@ class UptimeRobotCLI
       end
     end
     save_config(@config)
+  end
+
+  def update_monitors
+    @config['monitors'].each do |monitor|
+      payload = {
+        :apiKey => @config['account_api_key'],
+        :format => @config['format'],
+        :monitorFriendlyName => monitor['friendlyname'],
+        :monitorURL => monitor['url'],
+        :monitorType => monitor['type'],
+        :monitorKeywordType => monitor['keywordtype'],
+        :monitorKeywordValue => monitor['keywordvalue'],
+        :monitorAlertContacts => monitor['alertcontacts'].join('-')
+      }
+
+      response = @site['editMonitor'].get :params => payload, :content_type => :json, :accept => :json
+      result = parse_response(response)
+
+      puts result
+    end
   end
 
   def delete_monitors
