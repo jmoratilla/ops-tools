@@ -32,12 +32,13 @@ class UptimeRobotCLI
   def monitors
     response = @site['getMonitors'].get :params => {:apiKey => @config['account_api_key'], :logs => 0, :alertContacts => 0, :format => @config['format']}, :accept => :json
     result = parse_response(response)
-    result['monitors']['monitor']
+    result['stat'] == 'ok' ? result['monitors']['monitor'] : nil
   end
 
   def contacts
     response = @site['getAlertContacts'].get :params => {:apiKey => @config['account_api_key'], :format => @config['format']}, :accept => :json
     result = parse_response(response)
+    result['stat'] == 'ok' ? result['alertcontacts']['alertcontact'] : nil
   end
 
   def create_contacts
@@ -134,7 +135,7 @@ class UptimeRobotCLI
       'monitors' => monitors
     }
     
-    File.write("./config/#{Time.now}-#{@env}.json",data.to_json)
+    File.write("./config/#{Time.now}-#{@env}.json",JSON.pretty_generate(data))
   end
 end
 
