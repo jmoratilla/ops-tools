@@ -44,6 +44,10 @@ class UptimeRobotCLI
     end unless monitors.nil?# each 
   end # def
 
+  def extract_contacts(monitor)
+
+  end
+
   def monitors
     int_exclude_logs(dump_monitors)
   end
@@ -64,7 +68,7 @@ class UptimeRobotCLI
       'contacts' => contacts,
       'monitors' => monitors
     }
-    File.write("./config/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
+    File.write("./data/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
   end
 
   def full_dump
@@ -72,7 +76,7 @@ class UptimeRobotCLI
       'contacts' => contacts,
       'monitors' => dump_monitors
     }
-    File.write("./config/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
+    File.write("./data/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
   end
 
   def create_monitor(monitor)
