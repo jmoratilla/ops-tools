@@ -29,5 +29,8 @@ bq-uptimerobot.rb needs to read three config files:
 $ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb show_config
 $ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb dump
 $ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb upload_monitors
+$ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb create_contacts
+$ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb delete_contacts
+$ UPTIMEROBOT_ENV=guardias ./bq-uptimerobot.rb delete_monitors
 
 ```
