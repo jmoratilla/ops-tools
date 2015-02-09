@@ -11,16 +11,16 @@
       "password":           "L0mb4rd4!"
     },
     "dev-books": {
-      "key":                "u155950-4335786b7f2e208fd35daa52",
+      "key":                "u155950-4335786b7f2e208fd35daa52"
     },
     "qa-books": {
-      "key":                "u155965-34653f3f19e7f6bf0cde3a1c",
+      "key":                "u155965-34653f3f19e7f6bf0cde3a1c"
     },
     "qa2-books": {
-      "key":                "u167312-5af33254684f50d135e1dc5f",
+      "key":                "u167312-5af33254684f50d135e1dc5f"
     },
     "staging-books": {
-      "key":                "u113350-552661f213c77dda3cb656c7",
+      "key":                "u113350-552661f213c77dda3cb656c7"
     },
     "next-silkroad": {
       "email":              "devops+sr_next@bq.com",
