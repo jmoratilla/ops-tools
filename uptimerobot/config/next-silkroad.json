@@ -25,6 +25,7 @@
     ],
     "monitors": [
       {
+        "deleted": "true",
         "id": "776425882",
         "friendlyname": "NEXT-assets",
         "url": "https://assets-next.bqws.io/version",
@@ -40,6 +41,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425883",
         "friendlyname": "NEXT-bqpon",
         "url": "https://bqpon-next.bqws.io/version",
@@ -55,6 +57,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425884",
         "friendlyname": "NEXT-ec",
         "url": "https://ec-next.bqws.io/version",
@@ -70,6 +73,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425885",
         "friendlyname": "NEXT-evci",
         "url": "https://evci-next.bqws.io/version",
@@ -85,6 +89,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425886",
         "friendlyname": "NEXT-iam",
         "url": "https://iam-next.bqws.io/version",
@@ -100,6 +105,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425887",
         "friendlyname": "NEXT-notifications",
         "url": "https://notifications-next.bqws.io/version",
@@ -115,6 +121,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425888",
         "friendlyname": "NEXT-oauth",
         "url": "https://oauth-next.bqws.io/version",
@@ -130,6 +137,7 @@
         "alertcontacts": "2288552-2288553"
       },
       {
+        "deleted": "true",
         "id": "776425889",
         "friendlyname": "NEXT-resources",
         "url": "https://resources-next.bqws.io/version",

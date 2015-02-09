@@ -25,6 +25,7 @@
     ],
     "monitors": [
       {
+        "deleted": "true",
         "id": "776349343",
         "friendlyname": "QA2-Menorca",
         "url": "http://ebookmenorca-ibiblio-qa2.bq.com",
@@ -40,6 +41,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349344",
         "friendlyname": "QA2-Nubico",
         "url": "http://nubico-store-qa2.bq.com",
@@ -55,6 +57,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349345",
         "friendlyname": "QA2-Fnac",
         "url": "http://fnac-store-qa2.bq.com",
@@ -70,6 +73,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349346",
         "friendlyname": "QA2-TR3SC",
         "url": "http://tr3sc-store-qa2.bq.com",
@@ -85,6 +89,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349347",
         "friendlyname": "QA2-Liberdrac",
         "url": "http://liberdrac-store-qa2.bq.com",
@@ -100,6 +105,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349349",
         "friendlyname": "QA2-Sansborns",
         "url": "http://sanborns-store-qa2.bq.com",
@@ -115,6 +121,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349350",
         "friendlyname": "QA2-Vigo",
         "url": "http://ebookvigo-ibiblio-qa2.bq.com",
@@ -130,6 +137,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349351",
         "friendlyname": "QA2-Pozuelo",
         "url": "http://pozuelo-ibiblio-qa2.bq.com",
@@ -145,6 +153,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349352",
         "friendlyname": "QA2-ibiblioAdmin",
         "url": "https://admin-ibiblio-qa2.bq.com",
@@ -160,6 +169,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349353",
         "friendlyname": "QA2-Elkar",
         "url": "http://elkar-store-qa2.bq.com",
@@ -175,6 +185,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349354",
         "friendlyname": "QA2-Madrid",
         "url": "http://ebibliomadrid-ibiblio-qa2.bq.com",
@@ -190,6 +201,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349356",
         "friendlyname": "QA2-Aragon",
         "url": "http://ebiblioaragon-ibiblio-qa2.bq.com",
@@ -205,6 +217,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349357",
         "friendlyname": "QA2-Valenciana",
         "url": "http://ebibliocomunitatvalenciana-ibiblio-qa2.bq.com",
@@ -220,6 +233,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349358",
         "friendlyname": "QA2-Extremadura",
         "url": "http://ebiblioextremadura-ibiblio-qa2.bq.com",
@@ -235,6 +249,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349359",
         "friendlyname": "QA2-Rioja",
         "url": "http://ebibliolarioja-ibiblio-qa2.bq.com",
@@ -250,6 +265,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349360",
         "friendlyname": "QA2-Andalucia",
         "url": "http://ebiblioandalucia-ibiblio-qa2.bq.com",
@@ -265,6 +281,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349361",
         "friendlyname": "QA2-Asturias",
         "url": "http://ebiblioasturias-ibiblio-qa2.bq.com",
@@ -280,6 +297,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349363",
         "friendlyname": "QA2-Canarias",
         "url": "http://ebibliocanarias-ibiblio-qa2.bq.com",
@@ -295,6 +313,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349364",
         "friendlyname": "QA2-Ceuta",
         "url": "http://ebiblioceuta-ibiblio-qa2.bq.com",
@@ -310,6 +329,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349365",
         "friendlyname": "QA2-Galicia",
         "url": "http://ebibliogalicia-ibiblio-qa2.bq.com",
@@ -325,6 +345,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349366",
         "friendlyname": "QA2-Navarra",
         "url": "http://ebiblionavarra-ibiblio-qa2.bq.com",
@@ -340,6 +361,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349367",
         "friendlyname": "QA2-Murcia",
         "url": "http://ebibliomurcia-ibiblio-qa2.bq.com",
@@ -355,6 +377,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349368",
         "friendlyname": "QA2-Bivi",
         "url": "http://ebookbivi-ibiblio-qa2.bq.com",
@@ -370,6 +393,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349369",
         "friendlyname": "QA2-iBiblio1",
         "url": "http://ibiblio-ibiblio-qa2.bq.com",
@@ -385,6 +409,7 @@
         "alertcontacts": "2280072-2280071"
       },
       {
+        "deleted": "true",
         "id": "776349382",
         "friendlyname": "QA2-Castilla y Leon",
         "url": "http://ebibliocastillayleon-ibiblio-qa2.bq.com",
@@ -400,6 +425,7 @@
         "alertcontacts": "2280071-2280072"
       },
       {
+        "deleted": "true",
         "id": "776349385",
         "friendlyname": "QA2-Castilla-La Mancha",
         "url": "http://ebibliocastillalamancha-ibiblio-qa2.bq.com",
@@ -415,6 +441,7 @@
         "alertcontacts": "2280071-2280072"
       },
       {
+        "deleted": "true",
         "id": "776349389",
         "friendlyname": "QA2-Panel Plataforma",
         "url": "http://panel-qa2.bq.com",
@@ -430,6 +457,7 @@
         "alertcontacts": "2280071-2280072"
       },
       {
+        "deleted": "true",
         "id": "776349404",
         "friendlyname": "QA2-API",
         "url": "https://services-qa2.bq.com/api",
