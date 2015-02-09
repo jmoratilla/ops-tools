@@ -59,7 +59,7 @@ class UptimeRobotCLI
     dump_to_memory
     ['contacts','monitors'].each do |category|
       actions = extract_actions(category)
-      @log.info("new_update actions: #{actions}")
+      @log.info("update actions: #{actions}")
       send_actions(category,actions)
     end
   end
