@@ -12,7 +12,7 @@ class UptimeRobotCLI
   def initialize(env)
     @env = env
     @log = Logger.new(STDOUT)
-    @log.level = Logger::WARN
+    @log.level = Logger::INFO
 
     # We join json files from config dir...
     this_dir = File.dirname(__FILE__)
@@ -23,6 +23,13 @@ class UptimeRobotCLI
     @config = tmp.reduce({}) do |t,d|
       deep_merge(t,d)
     end
+
+    # Let's check we have an account, or quit quick
+    if @config['accounts'][@env].nil? then
+      puts ("initialize: there is no account #{@env}")
+      exit 1
+    end
+
     # Initialize the rest_client connection    
     @site = RestClient::Resource.new('http://api.uptimerobot.com')
     
@@ -37,23 +44,76 @@ class UptimeRobotCLI
     @log.debug("initialize payload: #{@common_payload}")
   end
 
-  def loglevel=(loglevel)
-    @log.level = loglevel
-  end
-
-  # helper method used to merge hashes
-  def deep_merge(h1, h2)
-    h1.merge(h2) { |key, h1_elem, h2_elem| deep_merge(h1_elem, h2_elem) }
-  end
 
   # shows the @config hash
   def show_config
     puts JSON.pretty_generate(@config)
   end
 
+  def loglevel=(loglevel)
+    @log.level = loglevel
+  end
+
+  # send updates to uptimerobot
+  def update
+    dump_to_memory
+    ['contacts','monitors'].each do |category|
+      actions = extract_actions(category)
+      @log.info("new_update actions: #{actions}")
+      send_actions(category,actions)
+    end
+  end
+
+  # generate a JSON with the configuration in uptimerobot
+  def dump
+    dump = {
+      "#{@env}" => {
+        'contacts' => contacts,
+        'monitors' => monitors_filtered
+      }
+    }
+    File.write("./data/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
+  end
+
+  # pause monitors
+  def pause(string)
+    @config[@env]['monitors'].each do |m|
+      next unless m['friendlyname'].match(/#{string}/)
+      action = {
+        'id' => m['id'],
+        'friendlyname' => m['friendlyname'],
+        'status' => "0"
+      }
+      @log.info("pause: #{action}")
+      edit_monitor(action)
+    end
+  end
+
+  # start monitors
+  def start(string)
+    @config[@env]['monitors'].each do |m|
+      next unless m['friendlyname'].match(/#{string}/)
+      action = {
+        'id' => m['id'],
+        'friendlyname' => m['friendlyname'],
+        'status' => "1"
+      }
+      @log.info("start: #{action}")
+      edit_monitor(action)
+    end
+  end
+
+
+  private
+  # helper method used to merge hashes
+  def deep_merge(h1, h2)
+    h1.merge(h2) { |key, h1_elem, h2_elem| deep_merge(h1_elem, h2_elem) }
+  end
+
+
   # filters response to remove unwanted stuff
   def parse_response(string)
-    @log.debug("parse_response: #{string}")
+#    @log.debug("parse_response: #{string}")
     result = ''
     if string.include?('jsonUptimeRobotApi') then
       result = string[/^jsonUptimeRobotApi\((.*)\)$/,1]
@@ -200,22 +260,7 @@ class UptimeRobotCLI
     end
   end
 
-=begin
-  def update
-    update_contacts(@config[@env]['contacts'])
-    update_monitors(@config[@env]['monitors'])
-  end
-=end
 
-  def dump
-    dump = {
-      "#{@env}" => {
-        'contacts' => contacts,
-        'monitors' => monitors_filtered
-      }
-    }
-    File.write("./data/#{Time.now.strftime('%Y-%m-%d-%H-%M')}-#{@env}.json",JSON.pretty_generate(dump))
-  end
 
   def dump_to_memory
     dump = {
@@ -262,30 +307,6 @@ class UptimeRobotCLI
     @final
   end
 
-  def pause(string)
-    @config[@env]['monitors'].each do |m|
-      @log.debug("pause: string = #{string}, monitor = #{m['friendlyname']}")
-      next unless m['friendlyname'].match(/#{string}/)
-      action = {
-        'id' => m['id'],
-        'status' => "0"
-      }
-      @log.debug("pause: #{action}")
-      edit_monitor(action)
-    end
-  end
-
-  def start(string)
-    @config[@env]['monitors'].each do |m|
-      next unless m['friendlyname'].match(/#{string}/)
-      action = {
-        'id' => m['id'],
-        'status' => "1"
-      }
-      edit_monitor(action)
-    end
-  end
-
   def extract_actions(category)
     actions = diff_extractor(@config[@env][category],@old_config[@env][category],'id') || []
     @log.debug("extract_actions: #{actions}")
@@ -299,29 +320,8 @@ class UptimeRobotCLI
     when 'contacts'
       update_contacts(actions)
     end
-      
-
-    # actions.each do |action|
-    #   if action['id'] then
-    #     if action['deleted'] then
-    #       delete_monitor action
-    #     else
-    #       edit_monitor action
-    #     end
-    #   else
-    #     create_monitor action
-    #   end
-    # end
   end
 
-  def update
-    dump_to_memory
-    ['contacts','monitors'].each do |category|
-      actions = extract_actions(category)
-      @log.warn("new_update actions: #{actions}")
-      send_actions(category,actions)
-    end
-  end
 end
 
 
