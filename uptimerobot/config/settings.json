@@ -1,16 +1,52 @@
 {
   "accounts": {
-    "new-guardias":        "u204099-71635b548691583f01440559",
-    "guardias":            "u113351-ef913fdbf14a19bf9dc87adc",
-    "dev-books":           "u155950-4335786b7f2e208fd35daa52",
-    "qa-books":            "u155965-34653f3f19e7f6bf0cde3a1c",
-    "qa2-books":           "u167312-5af33254684f50d135e1dc5f",
-    "staging-books":       "u113350-552661f213c77dda3cb656c7",
-    "next-silkroad":       "u177740-cf4b62ac6548b3aa3302be20",
-    "current-silkroad":    "u177748-a4af31b322dc94dfb86fa37a",
-    "qa-silkroad":         "u177763-343952fa6d02a6e8aa04cb1a",
-    "staging-silkroad":    "u177778-05aff86dbbc524860f27ccb4",
-    "production-silkroad": "u177783-4b75b670d5971a3f65a6531c"
+    "new-guardias": {
+      "email":              "oncallsoftware@bq.com",
+      "key":                "u204099-71635b548691583f01440559",
+      "password":           "L0mb4rd4!"
+    },
+    "guardias": {
+      "email":              "devops@bq.com",
+      "key":                "u113351-ef913fdbf14a19bf9dc87adc",
+      "password":           "L0mb4rd4!"
+    },
+    "dev-books": {
+      "key":                "u155950-4335786b7f2e208fd35daa52",
+    },
+    "qa-books": {
+      "key":                "u155965-34653f3f19e7f6bf0cde3a1c",
+    },
+    "qa2-books": {
+      "key":                "u167312-5af33254684f50d135e1dc5f",
+    },
+    "staging-books": {
+      "key":                "u113350-552661f213c77dda3cb656c7",
+    },
+    "next-silkroad": {
+      "email":              "devops+sr_next@bq.com",
+      "key":                "u177740-cf4b62ac6548b3aa3302be20",
+      "password":           "5rn3xt"
+    },
+    "current-silkroad": {
+      "email":              "devops+sr_current@bq.com",
+      "key":                "u177748-a4af31b322dc94dfb86fa37a",
+      "password":           "c4rr3nt"
+    },
+    "qa-silkroad": {
+      "email":              "devops+sr_qa@bq.com",
+      "key":                "u177763-343952fa6d02a6e8aa04cb1a",
+      "password":           "q4s11kr04d"
+    },
+    "staging-silkroad": {
+      "email":              "devops+sr_staging@bq.com",
+      "key":                "u177778-05aff86dbbc524860f27ccb4",
+      "password":           "st4g1ng"
+    },
+    "production-silkroad": {
+      "email":              "devops+sr_prod@bq.com",
+      "key":                "u177783-4b75b670d5971a3f65a6531c",
+      "password":           "s11kr04d"
+    }
   },
   "format": "json",
   "mappings": {

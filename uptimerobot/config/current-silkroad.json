@@ -1,0 +1,149 @@
+{
+  "current-silkroad": {
+    "contacts": [
+      {
+        "id": "0177748",
+        "value": "devops+sr_current@bq.com",
+        "friendlyname": "devops+sr_current@bq.com",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2288556",
+        "value": "silkroad-dev@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "0"
+      },
+      {
+        "id": "2288557",
+        "value": "devops@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "2"
+      }
+    ],
+    "monitors": [
+      {
+        "id": "776425929",
+        "friendlyname": "CURRENT-assets",
+        "url": "https://assets-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425930",
+        "friendlyname": "CURRENT-bqpon",
+        "url": "https://bqpon-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425931",
+        "friendlyname": "CURRENT-ec",
+        "url": "https://ec-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425932",
+        "friendlyname": "CURRENT-evci",
+        "url": "https://evci-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425933",
+        "friendlyname": "CURRENT-iam",
+        "url": "https://iam-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425934",
+        "friendlyname": "CURRENT-notifications",
+        "url": "https://notifications-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425935",
+        "friendlyname": "CURRENT-oauth",
+        "url": "https://oauth-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      },
+      {
+        "id": "776425936",
+        "friendlyname": "CURRENT-resources",
+        "url": "https://resources-current.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288557-2288556"
+      }
+    ]
+  }
+}

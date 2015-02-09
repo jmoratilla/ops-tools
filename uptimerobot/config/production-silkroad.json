@@ -1,0 +1,186 @@
+{
+  "production-silkroad": {
+    "contacts": [
+      {
+        "id": "0177783",
+        "value": "devops+sr_prod@bq.com",
+        "friendlyname": "devops+sr_prod@bq.com",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2288585",
+        "value": "devops@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2288586",
+        "value": "silkroad-dev@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2294792",
+        "value": "silkroad.guardias@gmail.com",
+        "friendlyname": "silkroad.guardias",
+        "type": "2",
+        "status": "2"
+      }
+    ],
+    "monitors": [
+      {
+        "id": "776426165",
+        "friendlyname": "PROD-assets",
+        "url": "https://assets.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426166",
+        "friendlyname": "PROD-bqpon",
+        "url": "https://bqpon.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426167",
+        "friendlyname": "PROD-ec",
+        "url": "https://ec.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426168",
+        "friendlyname": "PROD-evci",
+        "url": "https://evci.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426169",
+        "friendlyname": "PROD-iam",
+        "url": "https://iam.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426170",
+        "friendlyname": "PROD-notifications",
+        "url": "https://notifications.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426171",
+        "friendlyname": "PROD-oauth",
+        "url": "https://oauth.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776426172",
+        "friendlyname": "PROD-resources",
+        "url": "https://resources.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288585-2288586"
+      },
+      {
+        "id": "776480277",
+        "friendlyname": "EXT-7digital",
+        "url": "http://api.7digital.com/1.2/status?country=ES&oauth_consumer_key=7d8tpdr5euuv",
+        "type": "2",
+        "subtype": "",
+        "keywordtype": "2",
+        "keywordvalue": "status&#061;&quot;ok&quot;",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288586-0177783"
+      },
+      {
+        "id": "776480278",
+        "friendlyname": "PROD-webfs",
+        "url": "https://webfs.bqws.io/version",
+        "type": "2",
+        "subtype": "",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288586-0177783"
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "qa-silkroad": {
+    "contacts": [
+      {
+        "id": "0177763",
+        "value": "devops+sr_qa@bq.com",
+        "friendlyname": "devops+sr_qa@bq.com",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2288578",
+        "value": "devops@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "2"
+      }
+    ],
+    "monitors": [
+      {
+        "id": "776426143",
+        "friendlyname": "QA-assets",
+        "url": "https://assets-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578"
+      },
+      {
+        "id": "776426144",
+        "friendlyname": "QA-bqpon",
+        "url": "https://bqpon-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426145",
+        "friendlyname": "QA-ec",
+        "url": "https://ec-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426146",
+        "friendlyname": "QA-evci",
+        "url": "https://evci-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426147",
+        "friendlyname": "QA-iam",
+        "url": "https://iam-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426148",
+        "friendlyname": "QA-notifications",
+        "url": "https://notifications-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426149",
+        "friendlyname": "QA-oauth",
+        "url": "https://oauth-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      },
+      {
+        "id": "776426150",
+        "friendlyname": "QA-resources",
+        "url": "https://resources-qa.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "2",
+        "alertcontacts": "2288578-"
+      }
+    ]
+  }
+}

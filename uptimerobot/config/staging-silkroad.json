@@ -1,0 +1,149 @@
+{
+  "staging-silkroad": {
+    "contacts": [
+      {
+        "id": "0177778",
+        "value": "devops+sr_staging@bq.com",
+        "friendlyname": "devops+sr_staging@bq.com",
+        "type": "2",
+        "status": "2"
+      },
+      {
+        "id": "2288584",
+        "value": "silkroad-dev@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "0"
+      },
+      {
+        "id": "2288580",
+        "value": "devops@bq.com",
+        "friendlyname": "",
+        "type": "2",
+        "status": "2"
+      }
+    ],
+    "monitors": [
+      {
+        "id": "776426153",
+        "friendlyname": "STAGING-assets",
+        "url": "https://assets-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426154",
+        "friendlyname": "STAGING-bqpon",
+        "url": "https://bqpon-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426155",
+        "friendlyname": "STAGING-ec",
+        "url": "https://ec-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426156",
+        "friendlyname": "STAGING-evci",
+        "url": "https://evci-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426158",
+        "friendlyname": "STAGING-iam",
+        "url": "https://iam-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426159",
+        "friendlyname": "STAGING-notifications",
+        "url": "https://notifications-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426160",
+        "friendlyname": "STAGING-oauth",
+        "url": "https://oauth-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      },
+      {
+        "id": "776426161",
+        "friendlyname": "STAGING-resources",
+        "url": "https://resources-staging.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "build.version",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "9",
+        "alertcontacts": "2288580-2288584"
+      }
+    ]
+  }
+}

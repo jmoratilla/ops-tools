@@ -35,7 +35,7 @@ class UptimeRobotCLI
     
     # Generate a common set of attributes to send in each request
     @common_payload = {
-      :apiKey => @config['accounts'][@env],
+      :apiKey => @config['accounts'][@env]['key'],
       :format => @config['format']
     }
 
