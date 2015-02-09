@@ -25,13 +25,29 @@ bq-uptimerobot.rb needs to read three config files:
 ```
 {
   "accounts": {
-    "example":            "xxx-yyyyy",
-    "dev-example":        "xxx-yyyyy",
-    "qa-example":         "xxx-yyyyy",
-    "staging-example":    "xxx-yyyyy",
-    "next-example":       "xxx-yyyyy",
-    "current-example":    "xxx-yyyyy",
-    "production-example": "xxx-yyyyy"
+    "example": {
+      "key":              "xxx-yyyyy"
+    },
+    "dev-example": {
+      "key":              "xxx-yyyyy"
+    },
+    "qa-example": {
+      "key":              "xxx-yyyyy"
+    },
+    "staging-example": {
+      "key":              "xxx-yyyyy"
+    }
+    "next-example": {
+      "key":              "xxx-yyyyy"
+    },
+    "current-example": {
+      "key":              "xxx-yyyyy"
+    },
+    "production-example": {
+      "email":            "admin@example.com",
+      "key":              "xxx-yyyyy",
+      "password":         "valid for documentation"
+    }
   },
   "format": "json",
   "mappings": {
@@ -67,6 +83,11 @@ bq-uptimerobot.rb needs to read three config files:
   }
 }
 ```
+
+NOTEs: 
+
+Each account entry can add email and password attributes to document the web access.  Not needed for the program.
+
 
 #### [account].json
 
