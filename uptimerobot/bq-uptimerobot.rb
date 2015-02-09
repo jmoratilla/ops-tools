@@ -77,39 +77,68 @@ class UptimeRobotCLI
 
   # pause monitors
   def pause(string)
-    @config[@env]['monitors'].each do |m|
-      next unless m['friendlyname'].match(/#{string}/)
-      action = {
-        'id' => m['id'],
-        'friendlyname' => m['friendlyname'],
-        'status' => "0"
-      }
-      @log.info("pause: #{action}")
-      edit_monitor(action)
+    monitors = @config[@env]['monitors']
+    unless monitors.nil? then
+      monitors.each do |m|
+        next unless (m['friendlyname'].match(/#{string}/) || string.eql?('all'))
+        action = {
+          'id' => m['id'],
+          'friendlyname' => m['friendlyname'],
+          'status' => "0"
+        }
+        @log.info("pause: #{action}")
+        edit_monitor(action)
+      end
+    else
+      puts "nothing to do"
     end
   end
 
   # start monitors
   def start(string)
-    @config[@env]['monitors'].each do |m|
-      next unless m['friendlyname'].match(/#{string}/)
-      action = {
-        'id' => m['id'],
-        'friendlyname' => m['friendlyname'],
-        'status' => "1"
-      }
-      @log.info("start: #{action}")
-      edit_monitor(action)
+    monitors = @config[@env]['monitors']
+    unless monitors.nil? then
+      @config[@env]['monitors'].each do |m|
+        next unless m['friendlyname'].match(/#{string}/)
+        action = {
+          'id' => m['id'],
+          'friendlyname' => m['friendlyname'],
+          'status' => "1"
+        }
+        @log.info("start: #{action}")
+        edit_monitor(action)
+      end
+    else
+      puts "nothing to do"
     end
   end
 
+  # show monitors, logs and contacts from uptimerobot
+  def monitors
+    payload = @common_payload.clone
+    payload[:logs] = 1
+    payload[:alertcontacts] = 1
+    payload[:showMonitorAlertContacts] = 1
+    response = @site['getMonitors'].get :params => payload, :accept => :json
+    result = parse_response(response)
+    result['stat'] == 'ok' ? result['monitors']['monitor'] : nil
+  end
+
+  # show contacts from uptimerobot
+  def contacts
+    payload = @common_payload.clone
+    @log.debug("contacts payload: #{JSON.pretty_generate(payload)}")
+    response = @site['getAlertContacts'].get :params => payload, :accept => :json
+    result = parse_response(response)
+    @log.debug("contacts result: #{JSON.pretty_generate(result)}")
+    result['stat'] == 'ok' ? result['alertcontacts']['alertcontact'] : nil
+  end
 
   private
   # helper method used to merge hashes
   def deep_merge(h1, h2)
     h1.merge(h2) { |key, h1_elem, h2_elem| deep_merge(h1_elem, h2_elem) }
   end
-
 
   # filters response to remove unwanted stuff
   def parse_response(string)
@@ -121,17 +150,6 @@ class UptimeRobotCLI
       result = string
     end
     JSON.parse(result)
-  end
-
-  # downloads monitors, logs and contacts from uptimerobot
-  def monitors
-    payload = @common_payload.clone
-    payload[:logs] = 1
-    payload[:alertcontacts] = 1
-    payload[:showMonitorAlertContacts] = 1
-    response = @site['getMonitors'].get :params => payload, :accept => :json
-    result = parse_response(response)
-    result['stat'] == 'ok' ? result['monitors']['monitor'] : nil
   end
 
   # removes unwanted data downloaded and
@@ -159,7 +177,7 @@ class UptimeRobotCLI
     contacts.to_a.join('-')
   end
 
-  # when we don't want logs
+  # when we don't want logs, aesthetic method,
   def monitors_filtered
     clean_monitors(monitors)
   end
@@ -169,16 +187,8 @@ class UptimeRobotCLI
     JSON.pretty_generate(monitors)
   end
 
-  # downloads contacts from uptimerobot
-  def contacts
-    payload = @common_payload.clone
-    @log.debug("contacts payload: #{JSON.pretty_generate(payload)}")
-    response = @site['getAlertContacts'].get :params => payload, :accept => :json
-    result = parse_response(response)
-    @log.debug("contacts result: #{JSON.pretty_generate(result)}")
-    result['stat'] == 'ok' ? result['alertcontacts']['alertcontact'] : nil
-  end
 
+  # create a monitor using a definition in a json file
   def create_monitor(monitor)
     payload = @common_payload.clone
     @config['mappings']['newMonitor'].each do |k,v|
@@ -193,6 +203,7 @@ class UptimeRobotCLI
     result
   end
 
+  # edits a monitor using a definition in a json file
   def edit_monitor(monitor)
     payload = @common_payload.clone
     @config['mappings']['editMonitor'].each do |k,v|
@@ -207,6 +218,18 @@ class UptimeRobotCLI
     result
   end
 
+  # deletes a monitor using a definition in a json file
+  def delete_monitor(monitor)
+    payload = @common_payload.clone
+    payload[:monitorID] =  monitor['id']
+    @log.debug("delete_monitor payload: #{payload}")
+    response = @site['deleteMonitor'].get :params => payload, :content_type => :json, :accept => :json
+    result = parse_response(response)
+    @log.debug("delete_monitor: #{JSON.pretty_generate(result)}")
+    result
+  end
+
+  # groups monitor actions
   def update_monitors(monitors)
     @log.debug("update_monitors begin")
     monitors.each do |monitor|
@@ -223,16 +246,7 @@ class UptimeRobotCLI
     @log.debug("update_monitors end")
   end
 
-  def delete_monitor(monitor)
-    payload = @common_payload.clone
-    payload[:monitorID] =  monitor['id']
-    @log.debug("delete_monitor payload: #{payload}")
-    response = @site['deleteMonitor'].get :params => payload, :content_type => :json, :accept => :json
-    result = parse_response(response)
-    @log.debug("delete_monitor: #{JSON.pretty_generate(result)}")
-    result
-  end
-
+  # creates a contact using a definition in a json file
   def create_contact(contact)
     payload = @common_payload.clone
     payload[:alertContactType] = contact['type']
@@ -241,6 +255,7 @@ class UptimeRobotCLI
     result = parse_response(response)
   end
 
+  # deletes a contact using a definition in a json file
   def delete_contact(contact)
     payload = @common_payload.clone
     payload[:alertContactID] = contact['id']
@@ -248,6 +263,7 @@ class UptimeRobotCLI
     result = parse_response(response)
   end
 
+  # groups actions with contacts
   def update_contacts(contacts)
     contacts.each do |contact|
       if contact['id'] then
@@ -260,8 +276,7 @@ class UptimeRobotCLI
     end
   end
 
-
-
+  # generates a memory configuration with all data from uptimerobot
   def dump_to_memory
     dump = {
       "#{@env}" => {
@@ -272,6 +287,7 @@ class UptimeRobotCLI
     @old_config = dump
   end
 
+  # generates a full dump (with logs and alertContacts)
   def full_dump
     dump = {
       "#{@env}" => {
@@ -307,12 +323,14 @@ class UptimeRobotCLI
     @final
   end
 
+  # invokes diff_extractor with both config hashes and key attribute: id
   def extract_actions(category)
     actions = diff_extractor(@config[@env][category],@old_config[@env][category],'id') || []
     @log.debug("extract_actions: #{actions}")
     actions
   end
 
+  # Actions is one hash, but we have two kinds of records (monitors and records)
   def send_actions(category,actions)
     case category
     when 'monitors'
