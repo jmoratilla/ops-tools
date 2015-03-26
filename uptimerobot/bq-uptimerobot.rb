@@ -344,7 +344,18 @@ end
 
 
 def syntaxis
-  'Usage: bq-uptimerobot.rb [-h] | -a account command [parameters] -d '
+  'Usage: bq-uptimerobot.rb [-h] | -a account command [parameters] -d'
+end
+
+def tail
+  '
+  Examples:
+  $ ./bq-uptimerobot.rb [-d] -a example show_config
+  $ ./bq-uptimerobot.rb [-d] -a example dump
+  $ ./bq-uptimerobot.rb [-d] -a example update
+  $ ./bq-uptimerobot.rb [-d] -a example pause substring
+  $ ./bq-uptimerobot.rb [-d] -a example start substring
+  '
 end
 
 options = {}
@@ -358,10 +369,15 @@ OptionParser.new do |opts|
   opts.on('-d', '--debug', 'Enable debug level') do |debug|
     options[:debug] = true
   end
+
+  opts.on_tail('-h', '--help', 'Show this message') do
+    puts tail
+  end
 end.parse!
 
 if options == {} then
   puts syntaxis
+  puts tail
   exit 1
 end
 
