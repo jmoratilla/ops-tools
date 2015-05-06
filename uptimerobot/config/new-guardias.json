@@ -526,6 +526,36 @@
         "interval": "5",
         "status": "2",
         "alertcontacts": "0204099"
+      },
+      {
+        "id": "776626783",
+        "friendlyname": "silkroad-borrow",
+        "url": "https://borrow.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "borrow",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "0",
+        "alertcontacts": "0204099"
+      },
+      {
+        "id": "776626784",
+        "friendlyname": "silkroad-scheduler",
+        "url": "https://scheduler.bqws.io/version",
+        "type": "2",
+        "subtype": "0",
+        "keywordtype": "2",
+        "keywordvalue": "scheduler",
+        "httpusername": "",
+        "httppassword": "",
+        "port": "0",
+        "interval": "5",
+        "status": "0",
+        "alertcontacts": "0204099"
       }
     ]
   }
