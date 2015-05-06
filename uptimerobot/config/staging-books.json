@@ -25,10 +25,18 @@
       {
         "id": "2270420",
         "value": "apps-ebooks@bq.com",
-        "friendlyname": "",
+        "friendlyname": "disabled",
+        "type": "2",
+        "status": "0"
+      },
+      {
+        "id": "2327847",
+        "value": "icervantes-deploy-notifications@bq.com",
+        "friendlyname": "nuevo filtro apps-ebooks",
         "type": "2",
         "status": "2"
       }
+
     ],
     "monitors": [
       {
@@ -59,7 +67,7 @@
         "port": "0",
         "interval": "5",
         "status": "2",
-        "alertcontacts": "2270409-2270420"
+        "alertcontacts": "2270409-2327847"
       },
       {
         "id": "776256479",
@@ -74,7 +82,7 @@
         "port": "",
         "interval": "5",
         "status": "2",
-        "alertcontacts": "2270409-2270420"
+        "alertcontacts": "2270409-2327847"
       },
       {
         "id": "776256480",
@@ -149,7 +157,7 @@
         "port": "",
         "interval": "5",
         "status": "2",
-        "alertcontacts": "2270409-2270420"
+        "alertcontacts": "2270409-2327847"
       },
       {
         "id": "776256485",
@@ -449,7 +457,7 @@
         "port": "0",
         "interval": "5",
         "status": "2",
-        "alertcontacts": "2270409-2270420"
+        "alertcontacts": "2270409-2327847"
       },
       {
         "id": "776262983",
