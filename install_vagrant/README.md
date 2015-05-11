@@ -1,42 +1,49 @@
 # install_vagrant-cookbook
 
-TODO: Enter the cookbook description here.
+This script automates the installation of the needed applications and plugins 
+for BQ SW-OPERATIONS/chef- projects.
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['install_vagrant']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+* ubuntu 14.0.4 LTS
 
 ## Usage
 
-### install_vagrant::default
+Download or send the script in files/default/install_vagrant.sh
 
-Include `install_vagrant` in your node's `run_list`:
+Run it with
 
-```json
-{
-  "run_list": [
-    "recipe[install_vagrant::default]"
-  ]
-}
 ```
+$ chmod +x install_vagrant.sh
+```
+
+In some point in time, the script will ask your password (sudo) and later to 
+press <ENTER> to continue with the installation.
+
+## Debugging
+
+You can test the script and improve it by using kitchen.
+
+```
+$ kitchen create
+```
+
+Will create a kitchen machine without chef (DO NOT run kitchen converge on it)
+
+Then with
+
+```
+$ scp -P 2222 files/default/install_vagrant.sh vagrant@localhost:./ 
+```
+
+You will have the abitily to test the script.
+
+## TODO
+
+* Would be perfect to mount a external file system inside the kitchen instance
+* More OS support
+
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Jorge Moratilla (<jorge.moratilla@bq.com>)
