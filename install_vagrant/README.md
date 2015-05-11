@@ -49,6 +49,3 @@ You will have the abitily to test the script.
 * More OS support
 
 
-## License and Authors
-
-Author:: Jorge Moratilla (<jorge.moratilla@bq.com>)
