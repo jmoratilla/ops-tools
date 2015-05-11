@@ -3,6 +3,11 @@
 This script automates the installation of the needed applications and plugins 
 for BQ SW-OPERATIONS/chef- projects.
 
+## URL
+
+* https://stash.bq.com/projects/SWOP/repos/ops-tools/browse/install_vagrant
+
+
 ## Supported Platforms
 
 * ubuntu 14.0.4 LTS
