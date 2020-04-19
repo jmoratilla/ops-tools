@@ -1,5 +1,8 @@
 #!/bin/bash
 
+PREFIX="XXXXX"
+DOMAIN="${PREFIX}.es"
+
 if [ "$#" != "2" ]; then
   echo "Syntax: $0 production|staging service"
   exit 1
@@ -12,13 +15,13 @@ service=$2
 
 case $environment in 
   'production')
-    url_production_1="https://${service}.kelisto.es/"
-    url_production_2="https://${service}.kelisto.es/*"
+    url_production_1="https://${service}.${DOMAIN}/"
+    url_production_2="https://${service}.${DOMAIN}/*"
     cloudflare_api="https://api.cloudflare.com/client/v4/zones/31ac8fab221b5763427732625aa3134c/pagerules"
     ;;
   'staging')
-    url_production_1="https://${service}.kelisto.us/"
-    url_production_2="https://${service}.kelisto.us/*"
+    url_production_1="https://${service}.${DOMAIN}/"
+    url_production_2="https://${service}.${DOMAIN}/*"
     cloudflare_api="https://api.cloudflare.com/client/v4/zones/cd664e2e31e6a9fc346548251b331180/pagerules"
     ;;
   *)
@@ -27,8 +30,8 @@ case $environment in
   ;;
 esac
 
-url_failover_1="https://${service}.kelisto.biz/"
-url_failover_2="https://${service}.kelisto.biz/\$1"
+url_failover_1="https://${service}.${DOMAIN}/"
+url_failover_2="https://${service}.${DOMAIN}/\$1"
 
 function enable_forwarding {
   from=$1

@@ -4,9 +4,12 @@
 # 1. option1
 # 2. option2
 # Select option (or 'q' to quit):
-# Uncomment zone_id_stg to use it for testing (kelisto.us)
+# Uncomment zone_id_stg to use it for testing (${PREFIX}.us)
 #zoneid_stg="cd664e2e31e6a9fc346548251b331180"
 set -e
+
+PREFIX="XXXXX"
+DOMAIN="${PREFIX}.es"
 
 function Tidyup
 {
@@ -16,10 +19,10 @@ function Tidyup
  
 trap Tidyup 1 2 3 15
 
-config_file="https://s3-eu-west-1.amazonaws.com/kelisto-ops/monitoring/failover_config.yml"
+config_file="https://s3-eu-west-1.amazonaws.com/${PREFIX}-ops/monitoring/failover_config.yml"
 
 zoneid_prod="31ac8fab221b5763427732625aa3134c"
-zone_name="kelisto.es"
+zone_name="${DOMAIN}"
 zone_id=${zoneid_prod}
 tempfile="/tmp/.failover_config_$$.yml"
 

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+PREFIX="XXXXXX"
+
+
 if [ "${CLOUDFLARE_ACCOUNT}" == "" ] || [ "${CLOUDFLARE_API_KEY}" == "" ]
 then
   echo "CLOUDFLARE_EMAIL or CLOUDFLARE_API_KEY are not defined in the environment."
@@ -15,18 +18,18 @@ then
 fi
 
 get_zone() {
-  zone=$( echo $1 | perl -ne '$_ =~ m/(kelisto|prestum|quelisto).(\w+)/; print $&' ) 
+  zone=$( echo $1 | perl -ne '$_ =~ m/(${PREFIX}|prestum|quelisto).(\w+)/; print $&' ) 
   case $zone in
-    'kelisto.us')
+    '${PREFIX}.us')
       zone_id='cd664e2e31e6a9fc346548251b331180'
       ;;
-    'kelisto.biz')
+    '${PREFIX}.biz')
       zone_id='d98c3fe782098b1b266d6a6351a15530'
       ;;
-    'kelisto.es')
+    '${PREFIX}.es')
       zone_id='31ac8fab221b5763427732625aa3134c'
       ;;
-    'kelisto.com')
+    '${PREFIX}.com')
       zone_id='3efe6980754d70a07e7c5b08ffc06855'
       ;;
     'prestum.es')
@@ -44,14 +47,6 @@ get_zone() {
 
 
 purge_url() {
-  # API v1
-  # curl https://www.cloudflare.com/api_json.html \
-  #   -d 'a=zone_file_purge' \
-  #   -d 'tkn=21e87406757c61d222eabca92204e98830354' \
-  #   -d 'email=services.admin@kelisto.es' \
-  #   -d 'z=kelisto.es' \
-  #   -d "url=$1"
-
   # New APIv4
   url=$1
   get_zone "${url}"
