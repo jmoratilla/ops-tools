@@ -1,0 +1,27 @@
+# failover_config.yml
+# WARNING: public file (do not forget everyone read permission in S3) 
+---
+comunicacion:
+  production: kelisto-comms.herokuapp.com
+  failover: kelisto-comms.aws.ie.a9sapp.eu
+energia:
+  production: kelisto-energy.herokuapp.com
+  failover: kelisto-comms.aws.ie.a9sapp.eu
+finanzas:
+  production: kelisto-pf.herokuapp.com
+  failover: kelisto-pf.aws.ie.a9sapp.eu
+finanzas-agentes:
+  production: kelisto-pf-agents.herokuapp.com
+  failover: kelisto-pf-agents.aws.ie.a9sapp.eu
+finanzas-backend:
+  production: kelisto-pf-backend.herokuapp.com
+  failover: kelisto-pf-backend.aws.ie.a9sapp.eu
+mi:
+  production: kelisto-cam.herokuapp.com
+  failover: kelisto-cam.aws.ie.a9sapp.eu
+seguros:
+  production: kelisto-seguros.herokuapp.com
+  failover: kelisto-seguros.aws.ie.a9sapp.eu
+www:
+  production: kelisto-cms.herokuapp.com
+  failover: kelisto-cms.aws.ie.a9sapp.eu
