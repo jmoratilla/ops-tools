@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+
+require 'chef/encrypted_data_bag_item'
+require 'json'
+require 'optparse'
+require 'pp'
+
+def syntaxis
+  'Usage: show-encrypted-databag [-h] | -s file -k key'
+end
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = syntaxis
+
+  opts.on('-s', '--source FILE', 'Encrypted data bag item to show') do |src|
+    options[:source] = src
+  end
+
+  opts.on('-k', '--secret-file FILE', 'The encryption key') do |k|
+    options[:key] = k
+  end
+
+  opts.on('-v', '--[no-]verbose', 'Run verbosely') do |v|
+    options[:verbose] = v
+  end
+end.parse!
+
+if options.empty? then
+  puts syntaxis
+  exit 1
+end
+
+begin
+  puts options
+end if options[:verbose]
+
+secret = Chef::EncryptedDataBagItem.load_secret(File.expand_path(options[:key]))
+data = JSON.parse(File.read(File.expand_path(options[:source])))
+encrypted_data = Chef::EncryptedDataBagItem.new(data, secret)
+
+pp encrypted_data.to_hash
+
