@@ -1,11 +1,11 @@
 # install_vagrant-cookbook
 
 This script automates the installation of the needed applications and plugins 
-for BQ SW-OPERATIONS/chef- projects.
+for SW-OPERATIONS/chef- projects.
 
 ## URL
 
-* https://stash.bq.com/projects/SWOP/repos/ops-tools/browse/install_vagrant
+* https://stash.example.com/projects/SWOP/repos/ops-tools/browse/install_vagrant
 
 
 ## Supported Platforms
