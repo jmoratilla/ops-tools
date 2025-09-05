@@ -12,7 +12,7 @@ name = ARGV[0]
 $log.info "Name: #{name}"
 
 # Listar y guardar las keys
-response = HTTParty.get("https://10.0.1.220/api/v1/vault/keys2/?name=#{name}", {
+response = HTTParty.get("#{$api_endpoint}/vault/keys2/?name=#{name}", {
     :verify => false,
     :headers => $headers
 })
@@ -21,7 +21,7 @@ keys = JSON.parse(response.body)['resources']
 # Iterar
 keys.each do |k|
     puts "Exporting key #{k['name']} with id #{k['id']}"
-    
+
     response = HTTParty.post("https://10.0.1.220/api/v1/vault/keys2/#{k['id']}/export", {
         :verify => false,
         :headers => $headers

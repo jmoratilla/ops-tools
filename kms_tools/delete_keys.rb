@@ -21,8 +21,8 @@ keys = JSON.parse(response.body)['resources']
 # Iterar
 keys.each do |k|
     $log.info "Deleting key #{k['name']} with id #{k['id']}"
-    
-    response =  HTTParty.delete("https://10.0.1.220/api/v1/vault/keys2/#{k['id']}", { 
+
+    response =  HTTParty.delete("#{$api_endpoint}/vault/keys2/#{k['id']}", {
         :verify => false,
         :headers => $headers
     })

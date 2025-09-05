@@ -17,14 +17,14 @@ $log.debug "Endpoint: #{$api_endpoint}"
 response = HTTParty.post("#{$api_endpoint}/auth/tokens/", {
     :verify => false,
     :body => login_payload.to_json,
-    :headers => { 
+    :headers => {
         'Content-Type' => 'application/json',
         'Accept' => 'application/json'
     }
 })
 token = JSON.parse(response.body)['jwt']
 
-$headers = { 
+$headers = {
     'Content-Type' => 'application/json',
     'Accept' => 'application/json',
     'Authorization' => "Bearer #{token}"
